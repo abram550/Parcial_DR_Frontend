@@ -1,0 +1,67 @@
+<p-card class="w-12 h-full">
+    <ng-template pTemplate="header">
+        <div class="flex justify-content-between flex-wrap">
+            <h3 class="ml-4">
+                Registro de Artículos
+            </h3>
+            <div class="mt-2 mr-2">
+                <a 
+                  pButton 
+                  pRipple
+                  label="Crear Artículo" 
+                  icon="pi pi-plus"
+                  class="bg-cyan-600"
+                  [routerLink]="['/articles/nuevo']">
+                </a>
+            </div>
+        </div>
+    </ng-template>
+
+    <p>
+        <p-table [value]="articles">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th>Nombre</th>
+                    <th>Cantidad</th>
+                    <th>Stock Mínimo</th>
+                    <th>Stock Máximo</th>
+                    <th>Usuario ID</th>
+                    <th class="flex justify-content-center flex-wrap">Acciones</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-article>
+                <tr>
+                    <td>{{ article.name }}</td>
+                    <td>{{ article.quantity }}</td>
+                    <td>{{ article.stock_min }}</td>
+                    <td>{{ article.stock_max }}</td>
+                    <td>{{ article.user_id }}</td>
+                    <td>
+                        <button 
+                            pButton 
+                            pRipple
+                            icon="pi pi-print"
+                            class="bg-cyan-600 mr-1">
+                        </button>
+                        <a 
+                            pButton 
+                            pRipple
+                            icon="pi pi-sync"
+                            severity="warning"
+                            class="mr-1"
+                            [routerLink]="['/articles/edit', article.id]">
+                        </a>
+                        <button 
+                            pButton 
+                            pRipple
+                            severity="danger"
+                            icon="pi pi-eraser"
+                            class="mr-1"
+                            (click)="eliminar(article.id)">
+                        </button>
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </p>
+</p-card>

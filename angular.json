@@ -57,6 +57,11 @@
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "liveReload": true,
+            "watch": true,
+            "poll": 2000
+          },
           "configurations": {
             "production": {
               "buildTarget": "Parcial_DR:build:production"
@@ -92,5 +97,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "db1b3896-e518-4c97-bc47-0b1d75cec0a1"
   }
 }
